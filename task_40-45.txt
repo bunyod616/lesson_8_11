@@ -1,0 +1,56 @@
+41 = https://www.codewars.com/kata/59887207635904314100007b/train/python Closest to Zero
+
+
+def closest(lst):
+    closest_value = None
+    closest_distance = float('inf')
+    has_tie = False
+
+    for num in lst:
+        distance = abs(num)
+        if distance < closest_distance:
+            closest_distance = distance
+            closest_value = num
+            has_tie = False
+        elif distance == closest_distance:
+            if num != closest_value:
+                has_tie = True
+
+    return None if has_tie else closest_value
+
+42 = https://www.codewars.com/kata/625ea5c1a071210065c923af/train/python = Plastic Balance
+
+def plastic_balance(lst):
+    while lst and lst[0] + lst[-1] != sum(lst[1:-1]):
+        lst = lst[1:-1]
+    return lst
+
+43 = https://www.codewars.com/kata/5729c30961cecadc4f001878/train/python = Sorted Union
+
+def unite_unique(*arg):
+    res = []
+    for arr in arg:
+        for val in arr:
+            if not val in res: res.append(val)
+    return res
+
+44 = https://www.codewars.com/kata/5b5e0ef007a26632c400002a/train/python = Sub-array elements sum
+
+def elements_sum(arr, d=0):
+    return sum(r[i] if i<len(r) else d for i,r in enumerate(reversed(arr)))
+
+45 = https://www.codewars.com/kata/59de469cfc3c492da80000c5/train/python = Compress sentences
+
+def compress(sentence):
+    words = sentence.split()
+    word_positions = {}
+    unique_words = []
+    
+    for word in words:
+        normalized_word = word.lower()
+        if normalized_word not in word_positions:
+            word_positions[normalized_word] = len(unique_words)
+            unique_words.append(normalized_word)
+    
+    result = ''.join(str(word_positions[word.lower()]) for word in words)
+    return result
